@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <div>
+                <label for="idNomeComercial">Nome Comercial</label>
+                <input type="text" id="idNomeComercial" name="nmNomeComercial">
+            </div>
+            <div>
+                <label for="idDiametro">Diametro</label>
+                <input type="text" id="idDiametro" name="nmDiametro">
+            </div>
+            <div>
+                <label for="idPreço">Preço</label>
+                <input type="text" id="idPreço" name="nmPreço">
+            </div>
+
+            <div>
+                <input type="button" value="Enviar Valores" id="idBotãoEnviar">
+            </div>
+
+            <div>
+                <input type="button" value="Enviar Valores" id="idBotãoVerificar">
+            </div>
+
+            <div>
+                <output id="idOut"></output>
+            </div>
+        </div>
+
+        <script>
+            var enviarValores = document.querySelector("#idBotãoEnviar")
+
+            enviarValores.addEventListener("click", tratamentoEnviarValores)
+
+            const nomesComerciaisCirculares = []
+            const diametrosCirculares = []
+            const preçosCirculares = []
+
+            function tratamentoEnviarValores() {
+                let nomeComercial = document.querySelector("#idNomeComercial").value
+                nomeComercial = nomeComercial.toUpperCase()
+
+                let diametro = Number(document.querySelector("#idDiametro").value)
+
+                let preço = Number(document.querySelector("#idPreço").value)
+
+                let valorInserido = false
+
+                if (nomesComerciaisCirculares.length == 0) {
+                    nomesComerciaisCirculares.push(nomeComercial)
+                    diametrosCirculares.push(diametro)
+                    preçosCirculares.push(document.querySelector("#idPreço").value)
+                } else if (nomesComerciaisCirculares.length != 0) {
+                    for (let i = 0; i < nomesComerciaisCirculares.length; i++) {
+                        if (nomesComerciaisCirculares[i] == nomeComercial) {
+                            valorInserido = true
+                        } else if (diametrosCirculares[i] == diametro) {
+                            valorInserido = true
+                        }                       
+                    }
+                    if (valorInserido) {
+                        alert("Este nome/tamanho de pizza já foi inserido")
+                    } else {
+                        nomesComerciaisCirculares.push(nomeComercial)
+                        diametrosCirculares.push(diametro)
+                        preçosCirculares.push(document.querySelector("#idPreço").value)
+                    } 
+                }
+            }
+
+            var verificarValores = document.querySelector("#idBotãoVerificar")
+
+            verificarValores.addEventListener("click", tratamentoverificarValores)
+
+            function tratamentoverificarValores() {
+                const areasCirculares = []
+                for (let i = 0; i < diametrosCirculares.length; i++) {
+                    let raio = diametrosCirculares[i] / 2
+                    areasCirculares[i] = Math.PI * (raio*raio)      
+                }
+                console.log(areasCirculares)
+
+                const custoBenefícioCirculares = []
+                for (let i = 0; i < areasCirculares.length; i++) {
+                    custoBenefícioCirculares[i] = preçosCirculares[i] / areasCirculares[i]    
+                }
+
+                const custoBenefícioTotal = []
+                const nomesComerciaisTotal = []
+                const medidasTotal = []
+                const preçosTotal = []
+
+                for (let i = 0; i < custoBenefícioCirculares.length; i++) {
+                    custoBenefícioTotal.push(custoBenefícioCirculares[i])
+                    nomesComerciaisTotal.push(nomesComerciaisCirculares[i])
+                    medidasTotal.push(diametrosCirculares[i])
+                    preçosTotal.push(preçosCirculares[i])
+                }
+
+
+                const custoBenefícioCrescente = []
+                const nomesComerciaisCrescente = []
+                const medidasCrescente = []
+                const preçosCrescente = []
+
+                for (let i = 0; i < custoBenefícioTotal.length; i++) {
+                    let contagem = -1
+                    for (let a = 0; a < custoBenefícioTotal.length; a++) 
+                        if (custoBenefícioTotal[i] >= custoBenefícioTotal[a]) {
+                            contagem ++
+                        }
+                        custoBenefícioCrescente[contagem] = custoBenefícioTotal[i]
+                        nomesComerciaisCrescente[contagem] = nomesComerciaisTotal[i]
+                        medidasCrescente[contagem] = medidasTotal[i]
+                        preçosCrescente[contagem] = preçosTotal[i]
+                }
+                console.log(custoBenefícioCrescente)
+                saida = ""
+                for (let i = 0; i < custoBenefícioCrescente.length; i++) {
+                    saida += "\nPizza: " + nomesComerciaisCrescente[i] + ".     Medida: " + medidasCrescente[i] + ".     Preço: " + preçosCrescente[i] + ".     Custo Benefício: " + custoBenefícioCrescente[i] + "."
+                }
+                document.querySelector("#idOut").innerText = saida
+            }
+        </script>
+    </body>
+</html>

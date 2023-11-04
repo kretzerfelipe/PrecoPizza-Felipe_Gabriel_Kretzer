@@ -1,57 +1,87 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
-    <body>
-        <div>
-            <div>
-                <input type="radio" id="idCircular" name="nmTipo">
-                <label for="idCircular">Circular</label>
+<html lang="en">
 
-                <input type="radio" id="idQuadrada" name="nmTipo">
-                <label for="idQuadrada">Quadrada</label>
-            </div>
-            <div>
-                <label for="idNomeComercial">Nome Comercial</label>
-                <input type="text" id="idNomeComercial" name="nmNomeComercial">
-            </div>
-            <div>
-                <label for="idDiametroOuLado1">Diametro</label>
-                <input type="number" id="idDiametroOuLado1" name="nmDiametroOuLado1">
-            </div>
-            <div id="idDivLado2">
-                <label for="idLado2">Lado 2</label>
-                <input type="number" id="idLado2" name="nmLado2">
-            </div>
-            <div>
-                <label for="idPreço">Preço</label>
-                <input type="number" id="idPreço" name="nmPreço">
-            </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
 
-            <div>
-                <input type="button" value="Inserir Pizza" id="idBotãoEnviar">
-            </div>
+<body>
+    <div class="containder-flex h-100 bgPizza">
+        <div class="row h-100">
+            <div class="d-flex justify-content-center">
+                <div class="d-flex align-items-center">
+                    <div class="card p-5 bg-secondary-subtle">
+                        <div class="d-flex justify-content-center p-1">
+                            <h1>Calculadora de Custo-Benefício de Pizzas</h1>
+                        </div>
+                        <div class="d-flex justify-content-center p-1">
+                            <div class="p-1">
+                                <input type="radio" id="idCircular" name="nmTipo">
+                                <label for="idCircular">Circular</label>
+                            </div>
+                            <div class="p-1">
+                                <input type="radio" id="idQuadrada" name="nmTipo">
+                                <label for="idQuadrada">Retângular</label>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <label for="idNomeComercial">Nome Comercial</label>
+                        </div>
+                        <div class="d-flex justify-content-center pb-1">
+                            <input type="text" id="idNomeComercial" name="nmNomeComercial" class="form-control">
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <label for="idDiametroOuLado1">Diâmetro</label>
+                        </div>
+                        <div class="d-flex justify-content-center pb-1">
+                            <input type="number" id="idDiametroOuLado1" name="nmDiametroOuLado1" class="form-control">
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <label for="idLado2" id="idLado2Label">Lado 2</label>
+                        </div>
+                        <div class="d-flex justify-content-center pb-1">
+                            <input type="number" id="idLado2" name="nmLado2" class="form-control">
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <label for="idPreço">Preço</label>
+                        </div>
+                        <div class="d-flex justify-content-center pb-1">
+                            <input type="number" id="idPreço" name="nmPreço" class="form-control">
+                        </div>
+                        <div class="d-flex justify-content-center pt-3">
+                            <button class="btn btn-light" id="idBotãoEnviar">Inserir Pizza</button>
+                        </div>
 
 
-            <div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Tamanho</th>
-                            <th>Preço</th>
-                            <th>Custo-Benefício</th>
-                        </tr>
-                    </thead>
-                    <tbody id="idTbody">
-                    </tbody>
-                </table>
+                        <div class="d-flex justify-content-center pt-4">
+                            <table class="table table-striped-columns">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Tamanho (CM<sup>2</sup>)</th>
+                                        <th>Medidas (CM)</th>
+                                        <th>Preço (R$)</th>
+                                        <th>Custo-Benefício (R$/CM<sup>2</sup>)</th>
+                                        <th>Diferença (%)</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="idTbody">
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
 
-        <script src="script.js"></script>
-    </body>
+    <script src="script.js"></script>
+</body>
+
 </html>
